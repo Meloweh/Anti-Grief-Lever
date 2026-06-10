@@ -1,0 +1,4 @@
+#Maximum distance in blocks from a lever to any edge of its protection region.
+# Default: 96
+# Range: 1 ~ 1024
+maxProtectionRadius = 96

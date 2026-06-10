@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/lever_on",
+  "textures": {
+    "lever": "antigrieflever:block/anti_grief_lever_off"
+  }
+}

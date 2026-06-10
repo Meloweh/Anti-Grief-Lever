@@ -1,0 +1,10 @@
+{
+  "block.antigrieflever.anti_grief_lever": "Anti-Grief Lever",
+  "message.antigrieflever.invalid_region": "Invalid protection region: %s",
+  "message.antigrieflever.not_configured": "Sneak and right-click to configure this lever first.",
+  "message.antigrieflever.not_owner": "Only this lever's owner can do that.",
+  "message.antigrieflever.saved": "Protection region saved.",
+  "screen.antigrieflever.help": "Maximum radius: %s blocks",
+  "screen.antigrieflever.region": "Protection region",
+  "screen.antigrieflever.title": "Configure Anti-Grief Lever"
+}

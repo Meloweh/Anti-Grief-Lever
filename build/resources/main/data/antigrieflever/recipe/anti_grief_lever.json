@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "R",
+    "S",
+    "C"
+  ],
+  "result": {
+    "count": 1,
+    "id": "antigrieflever:anti_grief_lever"
+  }
+}
