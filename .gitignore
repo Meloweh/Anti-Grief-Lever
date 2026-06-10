@@ -1,0 +1,42 @@
+# Gradle
+.gradle/
+build/
+out/
+
+# NeoForge development runs
+run/
+runs/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# Visual Studio Code
+.vscode/
+
+# Local tooling
+.agents/
+.codex/
+
+# Java and JVM crash artifacts
+*.class
+hs_err_pid*
+replay_pid*
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*~

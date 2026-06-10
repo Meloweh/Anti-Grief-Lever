@@ -65,17 +65,22 @@ public final class AntiGriefLeverBlock extends LeverBlock implements EntityBlock
             return InteractionResult.CONSUME;
         }
 
-        if (!lever.isOwner(player.getUUID())) {
-            player.displayClientMessage(Component.translatable("message.antigrieflever.not_owner"), true);
-            return InteractionResult.CONSUME;
-        }
-
         if (player.isShiftKeyDown()) {
+            if (!lever.isOwner(player.getUUID())) {
+                player.displayClientMessage(Component.translatable("message.antigrieflever.not_owner"), true);
+                return InteractionResult.CONSUME;
+            }
             ModNetwork.openConfiguration(serverPlayer, lever);
             return InteractionResult.CONSUME;
         }
 
-        if (!lever.isConfigured()) {
+        boolean powered = state.getValue(POWERED);
+        if (!canPlayerToggle(powered, lever.isOwner(player.getUUID()))) {
+            player.displayClientMessage(Component.translatable("message.antigrieflever.not_owner"), true);
+            return InteractionResult.CONSUME;
+        }
+
+        if (!powered && !lever.isConfigured()) {
             player.displayClientMessage(Component.translatable("message.antigrieflever.not_configured"), true);
             return InteractionResult.CONSUME;
         }
@@ -88,8 +93,8 @@ public final class AntiGriefLeverBlock extends LeverBlock implements EntityBlock
     public void pull(BlockState state, Level level, BlockPos pos, @Nullable Player player) {
         if (level.isClientSide || player == null
             || !(level.getBlockEntity(pos) instanceof AntiGriefLeverBlockEntity lever)
-            || !lever.isOwner(player.getUUID())
-            || !lever.isConfigured()) {
+            || !canPlayerToggle(state.getValue(POWERED), lever.isOwner(player.getUUID()))
+            || (!state.getValue(POWERED) && !lever.isConfigured())) {
             return;
         }
 
@@ -98,6 +103,10 @@ public final class AntiGriefLeverBlock extends LeverBlock implements EntityBlock
             boolean active = level.getBlockState(pos).getValue(POWERED);
             ProtectionSavedData.get(serverLevel).setActive(pos, active);
         }
+    }
+
+    static boolean canPlayerToggle(boolean powered, boolean owner) {
+        return powered || owner;
     }
 
     @Override
