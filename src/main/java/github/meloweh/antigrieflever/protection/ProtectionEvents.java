@@ -4,6 +4,7 @@ import github.meloweh.antigrieflever.Antigrieflever;
 import java.util.UUID;
 import javax.annotation.Nullable;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -30,9 +31,24 @@ public final class ProtectionEvents {
         }
     }
 
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void onAntiGriefLeverPlacement(BlockEvent.EntityPlaceEvent event) {
+        if (!(event.getLevel() instanceof ServerLevel level)
+            || !event.getPlacedBlock().is(Antigrieflever.ANTI_GRIEF_LEVER.get())
+            || !ProtectionSavedData.get(level).isProtected(event.getPos())) {
+            return;
+        }
+
+        event.setCanceled(true);
+        if (event.getEntity() instanceof Player player) {
+            player.displayClientMessage(Component.translatable("message.antigrieflever.place_in_protected"), true);
+        }
+    }
+
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPlayerPlacement(BlockEvent.EntityPlaceEvent event) {
-        if (!(event.getLevel() instanceof ServerLevel level)
+        if (event.isCanceled()
+            || !(event.getLevel() instanceof ServerLevel level)
             || !(event.getEntity() instanceof Player player)) {
             return;
         }

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import javax.annotation.Nullable;
@@ -61,6 +62,23 @@ public final class ProtectionSavedData extends SavedData {
 
     public boolean isProtected(BlockPos pos) {
         return !claimsAt(pos).isEmpty();
+    }
+
+    public Optional<BlockPos> nearestActiveSourceNotOwnedBy(BlockPos origin, UUID excludedOwner) {
+        BlockPos nearest = null;
+        double nearestDistance = Double.MAX_VALUE;
+        for (Claim claim : claims.values()) {
+            if (!claim.isEffective() || claim.owner().equals(excludedOwner)) {
+                continue;
+            }
+
+            double distance = claim.source().distSqr(origin);
+            if (distance < nearestDistance) {
+                nearestDistance = distance;
+                nearest = claim.source();
+            }
+        }
+        return Optional.ofNullable(nearest);
     }
 
     public void upsert(BlockPos source, UUID owner, String definition, boolean active) {

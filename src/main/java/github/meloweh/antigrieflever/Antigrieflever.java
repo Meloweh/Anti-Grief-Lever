@@ -2,6 +2,7 @@ package github.meloweh.antigrieflever;
 
 import github.meloweh.antigrieflever.block.AntiGriefLeverBlock;
 import github.meloweh.antigrieflever.block.entity.AntiGriefLeverBlockEntity;
+import github.meloweh.antigrieflever.item.CopperCompassItem;
 import github.meloweh.antigrieflever.network.ModNetwork;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
@@ -37,6 +38,10 @@ public class Antigrieflever {
         "anti_grief_lever",
         () -> new BlockItem(ANTI_GRIEF_LEVER.get(), new Item.Properties())
     );
+    public static final DeferredItem<CopperCompassItem> COPPER_COMPASS = ITEMS.register(
+        "copper_compass",
+        () -> new CopperCompassItem(new Item.Properties().stacksTo(1))
+    );
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AntiGriefLeverBlockEntity>> ANTI_GRIEF_LEVER_BLOCK_ENTITY =
         BLOCK_ENTITY_TYPES.register(
             "anti_grief_lever",
@@ -56,6 +61,9 @@ public class Antigrieflever {
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
             event.accept(ANTI_GRIEF_LEVER_ITEM);
+        }
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            event.accept(COPPER_COMPASS);
         }
     }
 }

@@ -2,3 +2,5 @@
 # Default: 96
 # Range: 1 ~ 1024
 maxProtectionRadius = 96
+#Prevents shulker boxes and supported Sophisticated Backpacks items from being inserted into ender chests.
+restrictPortableStorageInEnderChests = true
