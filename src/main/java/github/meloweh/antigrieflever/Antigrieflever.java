@@ -3,11 +3,15 @@ package github.meloweh.antigrieflever;
 import github.meloweh.antigrieflever.block.AntiGriefLeverBlock;
 import github.meloweh.antigrieflever.block.entity.AntiGriefLeverBlockEntity;
 import github.meloweh.antigrieflever.item.CopperCompassItem;
+import github.meloweh.antigrieflever.item.PlayerFinderCompassItem;
 import github.meloweh.antigrieflever.network.ModNetwork;
+import github.meloweh.antigrieflever.recipe.PlayerFinderCompassRecipe;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -29,6 +33,8 @@ public class Antigrieflever {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES =
         DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, MODID);
+    public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS =
+        DeferredRegister.create(Registries.RECIPE_SERIALIZER, MODID);
 
     public static final DeferredBlock<AntiGriefLeverBlock> ANTI_GRIEF_LEVER = BLOCKS.register(
         "anti_grief_lever",
@@ -42,16 +48,26 @@ public class Antigrieflever {
         "copper_compass",
         () -> new CopperCompassItem(new Item.Properties().stacksTo(1))
     );
+    public static final DeferredItem<PlayerFinderCompassItem> PLAYER_FINDER_COMPASS = ITEMS.register(
+        "player_finder_compass",
+        () -> new PlayerFinderCompassItem(new Item.Properties().stacksTo(1))
+    );
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AntiGriefLeverBlockEntity>> ANTI_GRIEF_LEVER_BLOCK_ENTITY =
         BLOCK_ENTITY_TYPES.register(
             "anti_grief_lever",
             () -> BlockEntityType.Builder.of(AntiGriefLeverBlockEntity::new, ANTI_GRIEF_LEVER.get()).build(null)
+        );
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<PlayerFinderCompassRecipe>>
+        PLAYER_FINDER_COMPASS_RECIPE = RECIPE_SERIALIZERS.register(
+            "player_finder_compass",
+            () -> new SimpleCraftingRecipeSerializer<>(PlayerFinderCompassRecipe::new)
         );
 
     public Antigrieflever(IEventBus modEventBus, ModContainer modContainer) {
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
         BLOCK_ENTITY_TYPES.register(modEventBus);
+        RECIPE_SERIALIZERS.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(ModNetwork::register);
@@ -64,6 +80,7 @@ public class Antigrieflever {
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(COPPER_COMPASS);
+            event.accept(PLAYER_FINDER_COMPASS);
         }
     }
 }

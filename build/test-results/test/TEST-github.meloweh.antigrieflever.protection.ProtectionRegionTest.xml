@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="github.meloweh.antigrieflever.protection.ProtectionRegionTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-06-13T12:16:21" hostname="steven" time="0.005">
+<testsuite name="github.meloweh.antigrieflever.protection.ProtectionRegionTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-06-14T06:30:31" hostname="steven" time="0.005">
   <properties/>
   <testcase name="normalizesAbsoluteCuboidCoordinates()" classname="github.meloweh.antigrieflever.protection.ProtectionRegionTest" time="0.001"/>
-  <testcase name="ownerPlacementsRemainProtected()" classname="github.meloweh.antigrieflever.protection.ProtectionRegionTest" time="0.001"/>
+  <testcase name="ownerPlacementsRemainProtected()" classname="github.meloweh.antigrieflever.protection.ProtectionRegionTest" time="0.002"/>
   <testcase name="parsesCenteredCuboidWithExactDimensions()" classname="github.meloweh.antigrieflever.protection.ProtectionRegionTest" time="0.0"/>
-  <testcase name="nonOwnerPlacementsAreUnprotectedUntilTheClaimIsReactivated()" classname="github.meloweh.antigrieflever.protection.ProtectionRegionTest" time="0.0"/>
+  <testcase name="nonOwnerPlacementsAreUnprotectedUntilTheClaimIsReactivated()" classname="github.meloweh.antigrieflever.protection.ProtectionRegionTest" time="0.001"/>
   <testcase name="activationNeverChangesThePlacementOwner()" classname="github.meloweh.antigrieflever.protection.ProtectionRegionTest" time="0.0"/>
-  <testcase name="parsesSphericalRadius()" classname="github.meloweh.antigrieflever.protection.ProtectionRegionTest" time="0.0"/>
+  <testcase name="parsesSphericalRadius()" classname="github.meloweh.antigrieflever.protection.ProtectionRegionTest" time="0.001"/>
   <testcase name="rejectsRegionsBeyondConfiguredMaximum()" classname="github.meloweh.antigrieflever.protection.ProtectionRegionTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

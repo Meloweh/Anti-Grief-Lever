@@ -16,6 +16,18 @@ public final class Config {
         )
         .define("restrictPortableStorageInEnderChests", true);
 
+    public static final ModConfigSpec.IntValue PLAYER_FINDER_ACTIVE_MINUTES = BUILDER
+        .comment("How many minutes a player finder compass tracks its target after activation.")
+        .defineInRange("playerFinderActiveMinutes", 3, 1, 1440);
+
+    public static final ModConfigSpec.IntValue PLAYER_FINDER_UPDATE_SECONDS = BUILDER
+        .comment("How often, in seconds, an active player finder reports its remaining time and plays a tick sound.")
+        .defineInRange("playerFinderUpdateSeconds", 60, 1, 3600);
+
+    public static final ModConfigSpec.IntValue PLAYER_FINDER_COOLDOWN_DAYS = BUILDER
+        .comment("Player-wide cooldown in Minecraft days after a player finder tracking cycle ends.")
+        .defineInRange("playerFinderCooldownDays", 10, 0, 3650);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     private Config() {
@@ -27,5 +39,17 @@ public final class Config {
 
     public static boolean restrictPortableStorageInEnderChests() {
         return RESTRICT_PORTABLE_STORAGE_IN_ENDER_CHESTS.get();
+    }
+
+    public static long playerFinderActiveTicks() {
+        return PLAYER_FINDER_ACTIVE_MINUTES.get() * 60L * 20L;
+    }
+
+    public static long playerFinderUpdateTicks() {
+        return PLAYER_FINDER_UPDATE_SECONDS.get() * 20L;
+    }
+
+    public static long playerFinderCooldownTicks() {
+        return PLAYER_FINDER_COOLDOWN_DAYS.get() * 24_000L;
     }
 }

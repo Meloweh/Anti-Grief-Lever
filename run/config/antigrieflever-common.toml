@@ -4,3 +4,15 @@
 maxProtectionRadius = 96
 #Prevents shulker boxes and supported Sophisticated Backpacks items from being inserted into ender chests.
 restrictPortableStorageInEnderChests = true
+#How many minutes a player finder compass tracks its target after activation.
+# Default: 3
+# Range: 1 ~ 1440
+playerFinderActiveMinutes = 5
+#How often, in seconds, an active player finder reports its remaining time and plays a tick sound.
+# Default: 60
+# Range: 1 ~ 3600
+playerFinderUpdateSeconds = 60
+#Player-wide cooldown in Minecraft days after a player finder tracking cycle ends.
+# Default: 10
+# Range: 0 ~ 3650
+playerFinderCooldownDays = 10
