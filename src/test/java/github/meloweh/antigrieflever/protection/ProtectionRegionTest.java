@@ -92,6 +92,45 @@ class ProtectionRegionTest {
     }
 
     @Test
+    void containerAccessUsesProtectionOwnership() {
+        ProtectionSavedData data = new ProtectionSavedData();
+        UUID owner = UUID.randomUUID();
+        UUID guest = UUID.randomUUID();
+        BlockPos container = CENTER.offset(1, 0, 0);
+
+        data.upsert(CENTER, owner, "[5]", true);
+
+        assertTrue(data.canAccessContainer(container, owner));
+        assertFalse(data.canAccessContainer(container, guest));
+        assertFalse(data.canAccessContainer(container, null));
+
+        data.recordPlayerPlacement(container, guest);
+
+        assertTrue(data.canAccessContainer(container, guest));
+        assertTrue(data.canAccessContainer(container, null));
+    }
+
+    @Test
+    void containerAutomationMustOriginateFromTrustedProtectedSpace() {
+        ProtectionSavedData data = new ProtectionSavedData();
+        UUID owner = UUID.randomUUID();
+        UUID guest = UUID.randomUUID();
+        BlockPos container = CENTER.offset(1, 0, 0);
+        BlockPos ownerHopper = CENTER.offset(1, -1, 0);
+        BlockPos guestHopper = CENTER.offset(1, -2, 0);
+        BlockPos outsideHopper = CENTER.offset(10, 0, 0);
+
+        data.upsert(CENTER, owner, "[5]", true);
+
+        assertTrue(data.canAutomateContainerAccess(container, ownerHopper));
+        assertFalse(data.canAutomateContainerAccess(container, outsideHopper));
+
+        data.recordPlayerPlacement(guestHopper, guest);
+
+        assertFalse(data.canAutomateContainerAccess(container, guestHopper));
+    }
+
+    @Test
     void activationNeverChangesThePlacementOwner() {
         ProtectionSavedData data = new ProtectionSavedData();
         UUID placer = UUID.randomUUID();

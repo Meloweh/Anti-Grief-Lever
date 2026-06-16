@@ -28,6 +28,18 @@ public final class Config {
         .comment("Player-wide cooldown in Minecraft days after a player finder tracking cycle ends.")
         .defineInRange("playerFinderCooldownDays", 10, 0, 3650);
 
+    public static final ModConfigSpec.IntValue COPPER_COMPASS_ACTIVE_MINUTES = BUILDER
+        .comment("How many minutes a copper compass tracks active Anti-Grief Levers after activation.")
+        .defineInRange("copperCompassActiveMinutes", 3, 1, 1440);
+
+    public static final ModConfigSpec.IntValue COPPER_COMPASS_UPDATE_SECONDS = BUILDER
+        .comment("How often, in seconds, an active copper compass reports its remaining time and plays a tick sound.")
+        .defineInRange("copperCompassUpdateSeconds", 60, 1, 3600);
+
+    public static final ModConfigSpec.IntValue COPPER_COMPASS_COOLDOWN_DAYS = BUILDER
+        .comment("Player-wide cooldown in Minecraft days after a copper compass tracking cycle ends.")
+        .defineInRange("copperCompassCooldownDays", 10, 0, 3650);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     private Config() {
@@ -51,5 +63,17 @@ public final class Config {
 
     public static long playerFinderCooldownTicks() {
         return PLAYER_FINDER_COOLDOWN_DAYS.get() * 24_000L;
+    }
+
+    public static long copperCompassActiveTicks() {
+        return COPPER_COMPASS_ACTIVE_MINUTES.get() * 60L * 20L;
+    }
+
+    public static long copperCompassUpdateTicks() {
+        return COPPER_COMPASS_UPDATE_SECONDS.get() * 20L;
+    }
+
+    public static long copperCompassCooldownTicks() {
+        return COPPER_COMPASS_COOLDOWN_DAYS.get() * 24_000L;
     }
 }

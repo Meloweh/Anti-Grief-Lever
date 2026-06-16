@@ -14,21 +14,29 @@ public final class LeverConfigScreen extends Screen {
     private final BlockPos leverPos;
     private final String initialDefinition;
     private final int maxRadius;
+    private final String regionLabelKey;
     private EditBox regionInput;
     private Button saveButton;
     private String validationError = "";
 
-    public LeverConfigScreen(BlockPos leverPos, String initialDefinition, int maxRadius) {
-        super(Component.translatable("screen.antigrieflever.title"));
+    public LeverConfigScreen(
+        BlockPos leverPos,
+        String initialDefinition,
+        int maxRadius,
+        String titleKey,
+        String regionLabelKey
+    ) {
+        super(Component.translatable(titleKey));
         this.leverPos = leverPos;
         this.initialDefinition = initialDefinition;
         this.maxRadius = maxRadius;
+        this.regionLabelKey = regionLabelKey;
     }
 
     @Override
     protected void init() {
         int centerX = width / 2;
-        regionInput = new EditBox(font, centerX - 150, height / 2 - 20, 300, 20, Component.translatable("screen.antigrieflever.region"));
+        regionInput = new EditBox(font, centerX - 150, height / 2 - 20, 300, 20, Component.translatable(regionLabelKey));
         regionInput.setMaxLength(96);
         regionInput.setHint(Component.literal("[radius], [width,height], or [x1,y1,z1,x2,y2,z2]"));
         regionInput.setValue(initialDefinition);

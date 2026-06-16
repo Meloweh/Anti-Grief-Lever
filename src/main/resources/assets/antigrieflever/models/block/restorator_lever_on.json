@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/lever",
+  "textures": {
+    "lever": "antigrieflever:block/restorator_lever_on"
+  }
+}

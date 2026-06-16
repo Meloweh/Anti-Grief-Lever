@@ -60,6 +60,22 @@ public final class ProtectionSavedData extends SavedData {
         return true;
     }
 
+    public boolean canAccessContainer(BlockPos pos, @Nullable UUID actor) {
+        return canDestroy(pos, actor);
+    }
+
+    public boolean canAutomateContainerAccess(BlockPos containerPos, BlockPos accessorPos) {
+        for (Claim claim : claimsAt(containerPos)) {
+            if (claim.isBlacklisted(containerPos)) {
+                continue;
+            }
+            if (!claim.protects(accessorPos) || claim.isBlacklisted(accessorPos)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public boolean isProtected(BlockPos pos) {
         return !claimsAt(pos).isEmpty();
     }

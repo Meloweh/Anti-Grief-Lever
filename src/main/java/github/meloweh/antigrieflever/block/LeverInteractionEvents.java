@@ -13,8 +13,16 @@ public final class LeverInteractionEvents {
 
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+        if (event.getEntity().isCreative()
+            && event.getLevel().getBlockState(event.getPos()).getBlock() instanceof AcardeWarpStoneBlock) {
+            event.setUseBlock(TriState.TRUE);
+            event.setUseItem(TriState.FALSE);
+            return;
+        }
+
         if (event.getEntity().isShiftKeyDown()
-            && event.getLevel().getBlockState(event.getPos()).getBlock() instanceof AntiGriefLeverBlock) {
+            && (event.getLevel().getBlockState(event.getPos()).getBlock() instanceof AntiGriefLeverBlock
+                || event.getLevel().getBlockState(event.getPos()).getBlock() instanceof RestoratorLeverBlock)) {
             event.setUseBlock(TriState.TRUE);
             event.setUseItem(TriState.FALSE);
         }

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "food",
+  "key": {
+    "S": {
+      "item": "minecraft:sand"
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "pattern": [
+    "SWS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "antigrieflever:desert_sandwich"
+  }
+}

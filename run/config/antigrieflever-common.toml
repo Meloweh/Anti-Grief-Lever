@@ -16,3 +16,15 @@ playerFinderUpdateSeconds = 60
 # Default: 10
 # Range: 0 ~ 3650
 playerFinderCooldownDays = 10
+#How many minutes a copper compass tracks active Anti-Grief Levers after activation.
+# Default: 3
+# Range: 1 ~ 1440
+copperCompassActiveMinutes = 3
+#How often, in seconds, an active copper compass reports its remaining time and plays a tick sound.
+# Default: 60
+# Range: 1 ~ 3600
+copperCompassUpdateSeconds = 60
+#Player-wide cooldown in Minecraft days after a copper compass tracking cycle ends.
+# Default: 10
+# Range: 0 ~ 3650
+copperCompassCooldownDays = 10

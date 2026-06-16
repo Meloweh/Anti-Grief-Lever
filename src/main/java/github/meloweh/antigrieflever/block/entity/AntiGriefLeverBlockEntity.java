@@ -12,7 +12,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public final class AntiGriefLeverBlockEntity extends BlockEntity {
+public final class AntiGriefLeverBlockEntity extends BlockEntity implements ConfigurableRegionBlockEntity {
     @Nullable
     private UUID owner;
     private String definition = "";
@@ -26,6 +26,7 @@ public final class AntiGriefLeverBlockEntity extends BlockEntity {
         return owner;
     }
 
+    @Override
     public boolean isOwner(UUID player) {
         return owner != null && owner.equals(player);
     }
@@ -36,18 +37,31 @@ public final class AntiGriefLeverBlockEntity extends BlockEntity {
         syncClaim();
     }
 
+    @Override
     public String getDefinition() {
         return definition;
     }
 
+    @Override
     public boolean isConfigured() {
         return !definition.isBlank();
     }
 
+    @Override
     public void setDefinition(String definition) {
         this.definition = definition;
         setChanged();
         syncClaim();
+    }
+
+    @Override
+    public String configTitleKey() {
+        return "screen.antigrieflever.title";
+    }
+
+    @Override
+    public String regionLabelKey() {
+        return "screen.antigrieflever.region";
     }
 
     @Override

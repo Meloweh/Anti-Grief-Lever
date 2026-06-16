@@ -115,6 +115,7 @@ public final class PlayerFinderCompassItem extends CompassItem {
                 PlayerFinderSavedData.formatTicks(Config.playerFinderActiveTicks())
             )
         );
+        target.sendSystemMessage(Component.translatable("message.antigrieflever.player_finder.tracked_warning"));
         return InteractionResultHolder.consume(stack);
     }
 

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "antigrieflever:block/acarde_warp_stone"
+  }
+}

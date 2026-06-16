@@ -6,8 +6,10 @@
   "mixins": [
     "CommandsMixin",
     "ExplosionMixin",
+    "HopperBlockEntityMixin",
     "LevelChunkMixin",
     "LevelMixin",
+    "ServerGamePacketListenerImplMixin",
     "ServerPlayerGameModeMixin",
     "SlotMixin"
   ],
