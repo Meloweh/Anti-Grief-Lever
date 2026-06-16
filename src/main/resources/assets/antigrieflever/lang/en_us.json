@@ -64,6 +64,7 @@
   "message.antigrieflever.copper_compass.deactivated": "Copper compass deactivated. Cooldown remaining: %s.",
   "message.antigrieflever.copper_compass.missing_target": "No active Anti-Grief Lever target found.",
   "message.antigrieflever.copper_compass.player_already_active": "You already have a copper compass active for %s more.",
+  "message.antigrieflever.copper_compass_required": "An active Copper Compass is required to disable another player's Anti-Grief Lever.",
   "message.antigrieflever.copper_compass.target_missing_during_tracking": "No active Anti-Grief Lever target found. Tracking remains active for %s.",
   "message.antigrieflever.copper_compass.time_left": "Tracking nearest active Anti-Grief Lever: %s remaining.",
   "message.antigrieflever.container_protected": "This container is protected.",

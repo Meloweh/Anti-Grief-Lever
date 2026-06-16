@@ -1,6 +1,8 @@
 package github.meloweh.antigrieflever.tracking;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import github.meloweh.antigrieflever.Config;
 import java.util.UUID;
@@ -35,5 +37,20 @@ class CopperCompassSavedDataTest {
         assertEquals(now + Config.copperCompassActiveTicks(), session.activeUntil());
         assertEquals(session.activeUntil() + Config.copperCompassCooldownTicks(), session.cooldownUntil());
         assertEquals(now + Config.copperCompassUpdateTicks(), session.nextUpdateAt());
+    }
+
+    @Test
+    void activeSessionOnlyMatchesTheTrackingWindow() {
+        CopperCompassSavedData data = new CopperCompassSavedData();
+        UUID player = UUID.randomUUID();
+        long now = 1_000L;
+
+        data.activate(player, now);
+        CopperCompassSavedData.Session session = data.session(player);
+
+        assertTrue(data.hasActiveSession(player, now));
+        assertTrue(data.hasActiveSession(player, session.activeUntil() - 1L));
+        assertFalse(data.hasActiveSession(player, session.activeUntil()));
+        assertFalse(data.hasActiveSession(player, session.cooldownUntil() - 1L));
     }
 }

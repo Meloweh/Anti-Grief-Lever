@@ -2,10 +2,13 @@
 .gradle/
 build/
 out/
+repo/
 
 # NeoForge development runs
 run/
 runs/
+logs/
+crash-reports/
 
 # IntelliJ IDEA
 .idea/
@@ -14,8 +17,11 @@ runs/
 *.iws
 
 # Eclipse
+.metadata/
+.factorypath
 .classpath
 .project
+*.launch
 .settings/
 bin/
 
@@ -28,6 +34,7 @@ bin/
 
 # Java and JVM crash artifacts
 *.class
+*.hprof
 hs_err_pid*
 replay_pid*
 

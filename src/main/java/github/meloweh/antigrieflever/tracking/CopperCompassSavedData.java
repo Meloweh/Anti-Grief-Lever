@@ -33,6 +33,11 @@ public final class CopperCompassSavedData extends SavedData {
         return sessions.get(player);
     }
 
+    public boolean hasActiveSession(UUID player, long now) {
+        Session session = sessions.get(player);
+        return session != null && now < session.activeUntil();
+    }
+
     public void activate(UUID player, long now) {
         long activeUntil = now + Config.copperCompassActiveTicks();
         sessions.put(

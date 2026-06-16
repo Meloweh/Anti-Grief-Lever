@@ -4,7 +4,7 @@ import com.mojang.serialization.MapCodec;
 import github.meloweh.antigrieflever.block.entity.AntiGriefLeverBlockEntity;
 import github.meloweh.antigrieflever.network.ModNetwork;
 import github.meloweh.antigrieflever.protection.ProtectionSavedData;
-import java.util.UUID;
+import github.meloweh.antigrieflever.tracking.CopperCompassSavedData;
 import javax.annotation.Nullable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -75,8 +75,10 @@ public final class AntiGriefLeverBlock extends LeverBlock implements EntityBlock
         }
 
         boolean powered = state.getValue(POWERED);
-        if (!canPlayerToggle(powered, lever.isOwner(player.getUUID()))) {
-            player.displayClientMessage(Component.translatable("message.antigrieflever.not_owner"), true);
+        boolean owner = lever.isOwner(player.getUUID());
+        boolean hasActiveCopperCompass = !owner && hasActiveCopperCompass(serverPlayer);
+        if (!canPlayerToggleWithCompass(powered, owner, hasActiveCopperCompass)) {
+            player.displayClientMessage(Component.translatable(toggleDeniedMessage(powered, owner)), true);
             return InteractionResult.CONSUME;
         }
 
@@ -91,10 +93,16 @@ public final class AntiGriefLeverBlock extends LeverBlock implements EntityBlock
 
     @Override
     public void pull(BlockState state, Level level, BlockPos pos, @Nullable Player player) {
-        if (level.isClientSide || player == null
-            || !(level.getBlockEntity(pos) instanceof AntiGriefLeverBlockEntity lever)
-            || !canPlayerToggle(state.getValue(POWERED), lever.isOwner(player.getUUID()))
-            || (!state.getValue(POWERED) && !lever.isConfigured())) {
+        if (level.isClientSide || !(player instanceof ServerPlayer serverPlayer)
+            || !(level.getBlockEntity(pos) instanceof AntiGriefLeverBlockEntity lever)) {
+            return;
+        }
+
+        boolean powered = state.getValue(POWERED);
+        boolean owner = lever.isOwner(player.getUUID());
+        boolean hasActiveCopperCompass = !owner && hasActiveCopperCompass(serverPlayer);
+        if (!canPlayerToggleWithCompass(powered, owner, hasActiveCopperCompass)
+            || (!powered && !lever.isConfigured())) {
             return;
         }
 
@@ -107,6 +115,21 @@ public final class AntiGriefLeverBlock extends LeverBlock implements EntityBlock
 
     static boolean canPlayerToggle(boolean powered, boolean owner) {
         return powered || owner;
+    }
+
+    static boolean canPlayerToggleWithCompass(boolean powered, boolean owner, boolean hasActiveCopperCompass) {
+        return owner || (powered && hasActiveCopperCompass);
+    }
+
+    private static boolean hasActiveCopperCompass(ServerPlayer player) {
+        long now = player.getServer().overworld().getGameTime();
+        return CopperCompassSavedData.get(player.getServer()).hasActiveSession(player.getUUID(), now);
+    }
+
+    private static String toggleDeniedMessage(boolean powered, boolean owner) {
+        return powered && !owner
+            ? "message.antigrieflever.copper_compass_required"
+            : "message.antigrieflever.not_owner";
     }
 
     @Override

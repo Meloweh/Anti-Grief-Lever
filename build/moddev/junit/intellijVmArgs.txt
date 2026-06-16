@@ -1,1 +1,0 @@
--Dfml.modFolders=antigrieflever%%/mnt/hdd/Projects/AntiGriefLever/build/classes/java/main:antigrieflever%%/mnt/hdd/Projects/AntiGriefLever/build/resources/main:antigrieflever%%/mnt/hdd/Projects/AntiGriefLever/build/classes/java/test:antigrieflever%%/mnt/hdd/Projects/AntiGriefLever/build/resources/test
