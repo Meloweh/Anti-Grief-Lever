@@ -53,7 +53,7 @@ public final class DesertSandwichItem extends Item {
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
         ItemStack result = super.finishUsingItem(stack, level, entity);
         if (!level.isClientSide && entity instanceof Player player) {
-            player.hurt(player.damageSources().generic(), 1.0F);
+            player.hurt(player.damageSources().source(Antigrieflever.DESERT_SANDWICH_DAMAGE), 1.0F);
             player.sendSystemMessage(Component.translatable("message.antigrieflever.desert_sandwich.choked"));
         }
         return result;

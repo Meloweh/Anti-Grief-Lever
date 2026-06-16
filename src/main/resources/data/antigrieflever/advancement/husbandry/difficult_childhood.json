@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:husbandry/root",
+  "criteria": {
+    "eat_desert_sandwich": {
+      "conditions": {
+        "item": {
+          "items": "antigrieflever:desert_sandwich"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.antigrieflever.husbandry.difficult_childhood.description"
+    },
+    "frame": "task",
+    "icon": {
+      "count": 1,
+      "id": "antigrieflever:desert_sandwich"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.antigrieflever.husbandry.difficult_childhood.title"
+    }
+  },
+  "requirements": [
+    [
+      "eat_desert_sandwich"
+    ]
+  ]
+}

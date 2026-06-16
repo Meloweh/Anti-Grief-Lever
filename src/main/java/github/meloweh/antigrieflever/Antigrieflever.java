@@ -12,8 +12,11 @@ import github.meloweh.antigrieflever.item.PlayerFinderCompassItem;
 import github.meloweh.antigrieflever.network.ModNetwork;
 import github.meloweh.antigrieflever.recipe.PlayerFinderCompassRecipe;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
@@ -35,6 +38,10 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 @Mod(Antigrieflever.MODID)
 public class Antigrieflever {
     public static final String MODID = "antigrieflever";
+    public static final ResourceKey<DamageType> DESERT_SANDWICH_DAMAGE = ResourceKey.create(
+        Registries.DAMAGE_TYPE,
+        ResourceLocation.fromNamespaceAndPath(MODID, "desert_sandwich")
+    );
 
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);

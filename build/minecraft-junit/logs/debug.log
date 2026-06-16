@@ -1,17 +1,17 @@
-[16Jun2026 14:05:58.928] [Test worker/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgejunitdev, --version, 21.1.233, --assetIndex, 17, --assetsDir, /home/steven/.gradle/caches/neoformruntime/assets, --gameDir, ., --fml.fmlVersion, 4.0.42, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.233, --fml.neoFormVersion, 20240808.144430]
-[16Jun2026 14:05:58.930] [Test worker/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.5+11-LTS
-[16Jun2026 14:05:58.930] [Test worker/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.5 by Eclipse Adoptium; OS Linux arch amd64 version 6.12.91-1-MANJARO
-[16Jun2026 14:05:58.983] [Test worker/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgejunitdev
-[16Jun2026 14:05:59.004] [Test worker/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/home/steven/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%23126!/ Service=ModLauncher Env=SERVER
-[16Jun2026 14:05:59.152] [Test worker/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
-[16Jun2026 14:05:59.153] [Test worker/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/]: 
+[16Jun2026 14:42:54.620] [Test worker/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgejunitdev, --version, 21.1.233, --assetIndex, 17, --assetsDir, /home/steven/.gradle/caches/neoformruntime/assets, --gameDir, ., --fml.fmlVersion, 4.0.42, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.233, --fml.neoFormVersion, 20240808.144430]
+[16Jun2026 14:42:54.621] [Test worker/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.5+11-LTS
+[16Jun2026 14:42:54.622] [Test worker/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.5 by Eclipse Adoptium; OS Linux arch amd64 version 6.12.91-1-MANJARO
+[16Jun2026 14:42:54.671] [Test worker/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgejunitdev
+[16Jun2026 14:42:54.691] [Test worker/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/home/steven/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%23126!/ Service=ModLauncher Env=SERVER
+[16Jun2026 14:42:54.822] [Test worker/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
+[16Jun2026 14:42:54.823] [Test worker/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/]: 
      Mod List:
 		Name Version (Mod Id)
 
 		AntiGriefLever 1.4.0 (antigrieflever)
 		Minecraft 1.21.1 (minecraft)
 		NeoForge 21.1.233 (neoforge)
-[16Jun2026 14:05:59.401] [Test worker/INFO] [mixin/]: Compatibility level set to JAVA_21
-[16Jun2026 14:05:59.403] [Test worker/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgejunitdev' with arguments [--version, 21.1.233, --gameDir, ., --assetsDir, /home/steven/.gradle/caches/neoformruntime/assets, --assetIndex, 17]
-[16Jun2026 14:05:59.575] [Test worker/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.3).
-[16Jun2026 14:06:01.789] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.233, for MC 1.21.1
+[16Jun2026 14:42:55.109] [Test worker/INFO] [mixin/]: Compatibility level set to JAVA_21
+[16Jun2026 14:42:55.111] [Test worker/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgejunitdev' with arguments [--version, 21.1.233, --gameDir, ., --assetsDir, /home/steven/.gradle/caches/neoformruntime/assets, --assetIndex, 17]
+[16Jun2026 14:42:55.302] [Test worker/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.3).
+[16Jun2026 14:42:57.518] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.233, for MC 1.21.1
