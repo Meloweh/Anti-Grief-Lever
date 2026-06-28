@@ -79,7 +79,6 @@
   "message.antigrieflever.player_finder.player_already_active": "You already have a player finder active for %s more.",
   "message.antigrieflever.player_finder.target_offline": "Player %s is not online.",
   "message.antigrieflever.player_finder.target_offline_during_tracking": "%s is offline. Tracking remains active for %s.",
-  "message.antigrieflever.player_finder.tracked_warning": "A player is tracking you!",
   "message.antigrieflever.player_finder.time_left": "Tracking %s: %s remaining.",
   "message.antigrieflever.restorator.captured": "Restorator snapshot captured: %s blocks.",
   "message.antigrieflever.restorator.restored": "Restorator snapshot restored: %s blocks.",

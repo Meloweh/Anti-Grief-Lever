@@ -40,6 +40,14 @@ public final class Config {
         .comment("Player-wide cooldown in Minecraft days after a copper compass tracking cycle ends.")
         .defineInRange("copperCompassCooldownDays", 10, 0, 3650);
 
+    public static final ModConfigSpec.BooleanValue PROTOTYPE_CHAIN_MACE_ENABLED = BUILDER
+        .comment("Enables the temporary physics-driven chain mace prototype for one named player.")
+        .define("prototypeChainMaceEnabled", true);
+
+    public static final ModConfigSpec.ConfigValue<String> PROTOTYPE_CHAIN_MACE_PLAYER_NAME = BUILDER
+        .comment("Player name that receives the temporary chain mace prototype.")
+        .define("prototypeChainMacePlayerName", "D0m3nic");
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     private Config() {
@@ -75,5 +83,18 @@ public final class Config {
 
     public static long copperCompassCooldownTicks() {
         return COPPER_COMPASS_COOLDOWN_DAYS.get() * 24_000L;
+    }
+
+    public static boolean prototypeChainMaceEnabled() {
+        return PROTOTYPE_CHAIN_MACE_ENABLED.get();
+    }
+
+    public static void setPrototypeChainMaceEnabled(boolean enabled) {
+        PROTOTYPE_CHAIN_MACE_ENABLED.set(enabled);
+        PROTOTYPE_CHAIN_MACE_ENABLED.save();
+    }
+
+    public static String prototypeChainMacePlayerName() {
+        return PROTOTYPE_CHAIN_MACE_PLAYER_NAME.get();
     }
 }
