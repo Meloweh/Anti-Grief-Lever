@@ -29,10 +29,11 @@ import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 
 @EventBusSubscriber(modid = Antigrieflever.MODID, value = Dist.CLIENT)
 public final class PrototypeChainMaceClient {
-    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(
+    private static final ResourceLocation BASE_TEXTURE = ResourceLocation.fromNamespaceAndPath(
         Antigrieflever.MODID,
         "textures/entity/prototype_chain_mace.png"
     );
+    private static final ResourceLocation FIRE_TEXTURE = ResourceLocation.withDefaultNamespace("textures/block/lava_still.png");
     private static final Map<UUID, State> STATES = new HashMap<>();
     private static final Map<UUID, OrientationState> ORIENTATIONS = new HashMap<>();
 
@@ -88,7 +89,7 @@ public final class PrototypeChainMaceClient {
             renderPoses.add(new RenderPose(state, handle, tip, sideX));
         }
 
-        RenderType baseType = RenderType.entityCutoutNoCull(TEXTURE);
+        RenderType baseType = RenderType.entityCutoutNoCull(BASE_TEXTURE);
         VertexConsumer base = bufferSource.getBuffer(baseType);
 
         for (RenderPose renderPose : renderPoses) {
@@ -109,7 +110,7 @@ public final class PrototypeChainMaceClient {
         bufferSource.endBatch(baseType);
 
         float gameTime = minecraft.level.getGameTime() + partialTick;
-        RenderType fireType = RenderType.energySwirl(TEXTURE, gameTime * 0.012F, gameTime * 0.018F);
+        RenderType fireType = RenderType.energySwirl(FIRE_TEXTURE, gameTime * 0.012F, gameTime * 0.018F);
         VertexConsumer fire = bufferSource.getBuffer(fireType);
         for (RenderPose renderPose : renderPoses) {
             State state = renderPose.state();
